@@ -3,19 +3,13 @@
 //level 2
 
 async function getUsers() {
-    let doc = await Promise.all(getUser(), getProfile(), getPosts());
-   
-    let [user, Profile, p] = [doc[0], doc[1], doc[2]]
-
-    const userProfile = {
+    let [user, profile, posts] = await Promise.all([getUser(), getProfile(), getPosts()]);
+    return {
         user,
-        Profile,
-        posts: p
+        profile,
+        posts
     };
-
-    return userProfile;
 }
-
 
 
 
